@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-white">
+    <div class="container text-center mb-5" id="title-subtitle">
+        <h1 class="text-primary">Strong Password Generator</h1>
+    <h3 class="text-success">Genera una password sicura</h3>
+    </div>
+    
+    <form method="GET" action="">
+        <div id="form-password-generator" class="container p-3 w-75 border border-3 rounded-3 border-success bg-success-subtle">
+        <div class="form-group row align-items-center mb-3">
+            <label for="inputText" class="col-6 col-form-label">Lunghezza password:</label>
+            <div class="col-4">
+               <input type="text" class="form-control" id="inputText"> 
+            </div> 
+        </div>
+        <div class="form-group row align-items-center mb-3">
+            <label for="inputRadio" class="col-6 col-form-label">Consenti ripetizioni di uno o più caratteri:</label>
+            <div class="col-2">
+               <div class="col form-check">
+                    <input class="form-check-input" type="radio" name="repetitionYes" id="repetitionRadio1" value="optionYes"> 
+                    <label for="repetitionYes" class="form-check-label">Sì</label>
+                </div> 
+                <div class="col form-check">
+                    <input class="form-check-input" type="radio" name="repetitionNo" id="repetitionRadio2" value="optionNo"> 
+                    <label for="repetitionNo" class="form-check-label">No</label>
+                </div>  
+            </div>  
+        </div>
+        <div class="form-group row align-items-center mb-5">
+            <label for="inputCheckbox" class="col-6 col-form-label">Consenti le seguenti tipologie di caratteri:</label>
+            <div class="col-4">
+                <div class="col-4 form-check">
+               <input class="form-check-input" type="checkbox" name="lettersCheckbox" id="checkbox1" value="lettersOption"> 
+               <label for="lettersCheckbox" class="form-check-label">Lettere</label>
+            </div> 
+            <div class="col-4 form-check">
+               <input class="form-check-input" type="checkbox" 
+               name="numbersCheckbox" id="checkbox2" 
+               value="numbersOption"> 
+               <label for="numbersCheckbox" class="form-check-label">Numeri</label>
+            </div> 
+            <div class="col form-check">
+               <input class="form-check-input" type="checkbox" 
+               name="specialCheckbox" id="checkbox3" 
+               value="specialOption"> 
+               <label for="specialCheckbox" class="form-check-label">Caratteri speciali</label>
+            </div> 
+            </div>
+        </div>
+        <div class="form-group row justify-content-center gap-3">
+            <button type="submit" class="btn btn-primary col-2">Invia</button>
+            <button type="delete" class="btn btn-primary col-2">Annulla</button>
+        </div>
+        
+    </div>
+    </form>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>    
+</body>
+</html>
