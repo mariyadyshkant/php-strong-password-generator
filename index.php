@@ -88,12 +88,41 @@
     $i = "";
     for ($i = 0; $i < $passwordLenght; $i++) {
         $randomumber = rand(0, strlen($allCharacters) - 1);
-        $newPassword .= $allCharacters[$randomumber];
-        var_dump($newPassword);
-
+        $newCharacter = $allCharacters[$randomumber];
+        
+        if (isset($_GET['repetition']) && $_GET['repetition'] === "1") {
+             $newPassword .= $newCharacter;
+        } else if (isset($_GET['repetition']) && $_GET['repetition'] === "2" && strpos($newPassword, $newCharacter) !== false) {
+               $i--;
+               continue; 
+            }
     };
+    var_dump($newPassword);
+
+
 
     ?>
+
+    <div class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">La password è stata generata correttamente!</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p><?php $newPassword ?></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Copia password</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Chiudi</button>
+                </div>
+            </div> 
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>    
 </body>
 </html>
