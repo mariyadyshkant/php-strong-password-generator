@@ -15,23 +15,23 @@
     <form method="GET" action="">
         <div id="form-password-generator" class="container p-3 w-75 border border-3 rounded-3 border-success bg-success-subtle">
         <div class="form-group row align-items-center mb-3">
-            <label for="inputText" class="col-6 col-form-label">Lunghezza password:</label>
+            <label for="inputNumber" class="col-6 col-form-label">Lunghezza password:</label>
             <div class="col-4">
-               <input type="text" class="form-control" id="inputText"> 
+               <input type="number" class="form-control" id="inputNumber" name="lenghtNumber"> 
             </div> 
         </div>
         <div class="form-group row align-items-center mb-3">
             <label for="inputRadio" class="col-6 col-form-label">Consenti ripetizioni di uno o più caratteri:</label>
             <div class="col-2">
                <div class="col form-check">
-                    <input class="form-check-input" type="radio" name="repetitionYes" id="repetitionRadio1" value="optionYes"> 
-                    <label for="repetitionYes" class="form-check-label">Sì</label>
-                </div> 
-                <div class="col form-check">
-                    <input class="form-check-input" type="radio" name="repetitionNo" id="repetitionRadio2" value="optionNo"> 
-                    <label for="repetitionNo" class="form-check-label">No</label>
-                </div>  
-            </div>  
+                    <input class="form-check-input" type="radio" 
+                    name="repetition" id="repetitionRadio1" value="1"> 
+                    <label for="repetitionRadio1" class="form-check-label">Sì</label><br>
+                    <input class="form-check-input" type="radio" 
+                    name="repetition" id="repetitionRadio2" value="2"> 
+                    <label for="repetitionRadio2" class="form-check-label">No</label>
+                </div>
+            </div>   
         </div>
         <div class="form-group row align-items-center mb-5">
             <label for="inputCheckbox" class="col-6 col-form-label">Consenti le seguenti tipologie di caratteri:</label>
@@ -61,6 +61,39 @@
         
     </div>
     </form>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>    
+
+    <?php
+    $passwordLenght = $_GET['lenghtNumber'];
+
+    $lettereMaiusc = "ABCDEFGHIJKLMNOPQRSTUVZWX";
+    $lettereMinusc = "abcdefghijklmnopqrstuvzwx";
+    $numeri = "0123456789";
+    $caratteriSpeciali = "*#-_?!$&%@+=";
+
+    $allCharacters = "";
+    if (isset($_GET['lettersCheckbox'])) {
+        $allCharacters .= $lettereMaiusc . $lettereMinusc;
+        var_dump($allCharacters);
+    } 
+    if (isset($_GET['numbersCheckbox'])) {
+        $allCharacters .= $numeri;
+        var_dump($allCharacters);
+    }
+    if (isset($_GET['specialCheckbox'])) {
+        $allCharacters .= $caratteriSpeciali;
+        var_dump($allCharacters);
+    };
+
+    $newPassword = "";
+    $i = "";
+    for ($i = 0; $i < $passwordLenght; $i++) {
+        $randomumber = rand(0, strlen($allCharacters) - 1);
+        $newPassword .= $allCharacters[$randomumber];
+        var_dump($newPassword);
+
+    };
+
+    ?>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>    
 </body>
 </html>
